@@ -3,17 +3,23 @@ import { Route } from 'react-router';
 import { Layout } from '../components/Layout';
 import { Home } from '../components/Home';
 import P5Wrapper from 'react-p5-wrapper';
-import ImageClassifierScript from '../components/ImageClassifierScript/ImageClassifierScript'
+// import { P5Wrapper } from '../components/ImageClassifier/ImageClassifier'
+import Sketch from '../components/Sketch/Sketch';
 
 export default class App extends Component {
   displayName = App.name
 
   render() {
     return (
-      <Layout>
-        <Route exact path='/' component={Home} />
-        <Route path='/imageClass' component={<P5Wrapper sketch={ImageClassifierScript}/>} />
-      </Layout>
+      <div>
+        <p>this is</p>
+        <P5Wrapper Sketch={Sketch} />
+      </div>
+      // <Layout>
+      //   <Route exact path='/' component={Home} />
+      //   <Route path='/imageClass' component={<P5Wrapper ImageClassifierScript={ImageClassifierScript} />} />
+        
+      // </Layout>
     );
   }
 }

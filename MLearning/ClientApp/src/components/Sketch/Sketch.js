@@ -14,6 +14,7 @@ let mobilenet;
 let classifier;
 let video;
 let label = '';
+let height;
 let happyButton;
 let sadButton;
 let trainButton;
@@ -39,7 +40,7 @@ p.shileTraining = function(loss){
 
 p.setup = function () {
   p.createCanvas(640, 550);
-  video = p.createCapture(p5.Camera);
+  video = p.createCapture(p5.VIDEO);
   video.hide();
   p.background(0);
   mobilenet = ml5.featureExtractor('MobileNet');
@@ -66,7 +67,7 @@ p.draw = function() {
  p.image(video, 0, 0);
  p.fill(255);
  p.textSize(32);
- //p.text(label, 10, height - 20);
+ p.text(label, 10, height - 20);
 }
 
 }
