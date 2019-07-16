@@ -1,16 +1,30 @@
-import React, { Component } from 'react';
-import './ImageClassifier.scss';
-import tiger from "./tiger.jpg";
+import React from 'react';
+import p5 from 'p5';
 
-export class ImageClassifier extends Component {
+class P5Wrapper extends React.Component {
+
+  componentDidMount() {
+    this.canvas = new p5(this.props.sketch, this.wrapper);
+    if( this.canvas.myCustomRedrawAccordingToNewPropsHandler ) {
+      this.canvas.myCustomRedrawAccordingToNewPropsHandler(this.props);
+    }
+  }
+
+  componentWillReceiveProps(newprops) {
+    if(this.props.sketch !== newprops.sketch){
+      this.wrapper.removeChild(this.wrapper.childNodes[0]);
+      this.canvas = new p5(newprops.sketch, this.wrapper);
+    }
+    if( this.canvas.myCustomRedrawAccordingToNewPropsHandler ) {
+      this.canvas.myCustomRedrawAccordingToNewPropsHandler(newprops);
+    }
+  }
+
   render() {
-    return (
-      <div className="App">
-        <h1>Image classification with ML5.js</h1>
-	 <img src={ tiger } id="image" width="400" alt="" />
-      </div>
-    );
+    return <div ref={wrapper => this.wrapper = wrapper}>
+      
+    </div>;
   }
 }
 
-// export default ImageClassifier;
+export default P5Wrapper;
