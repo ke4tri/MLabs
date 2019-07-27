@@ -1,12 +1,11 @@
-import * as p5 from "p5";
+import p5 from "p5";
 import * as ml5 from "ml5";
+import "p5/lib/addons/p5.dom";
 //The above is were I am getting my 
 // Error: only one instance of babel-polyfill is allowed
 // possible work around : https://github.com/babel/babel-loader/issues/401
 // It happens after the npm install p5
 // That seem sto bring in another instance of the babel-polyfill?
-
-
 
 export default function Sketch (p) {
 
@@ -28,7 +27,7 @@ p.gotResults = function(error, result) {
   }
 }
 
-p.shileTraining = function(loss){
+p.whileTraining = function(loss){
   if (loss == null) {
     console.log('Training Complete!');
     classifier.classify(p.gotResults);

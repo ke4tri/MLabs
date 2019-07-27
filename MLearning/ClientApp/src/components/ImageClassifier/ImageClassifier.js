@@ -1,7 +1,7 @@
 import React from 'react';
 import p5 from 'p5';
 
-class P5Wrapper extends React.Component {
+export default class P5Wrapper extends React.Component {
 
   componentDidMount() {
     this.canvas = new p5(this.props.sketch, this.wrapper);
@@ -21,10 +21,13 @@ class P5Wrapper extends React.Component {
   }
 
   render() {
-    return <div ref={wrapper => this.wrapper = wrapper}>
-      
-    </div>;
+    return (
+    <div ref={wrapper => this.wrapper = wrapper}>
+   {this.props.Sketch}
+    </div>
+    
+    )
   }
 }
 
-export default P5Wrapper;
+// export default P5Wrapper;
